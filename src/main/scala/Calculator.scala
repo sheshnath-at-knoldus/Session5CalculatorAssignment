@@ -109,11 +109,11 @@ object AddAllOperands extends Operator {
   }
   // Helper method to add up all the operands
   private def addAll(operands: Seq[Double]): Double = {
-    var result = 0.0
-    for (operand <- operands) {
-      result += operand
+    if (operands.isEmpty) {
+      0.0
+    } else {
+      operands.head + addAll(operands.tail)
     }
-    result
   }
 }
 
